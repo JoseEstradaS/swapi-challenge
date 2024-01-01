@@ -4,7 +4,13 @@ import NoticeText from '../../atoms/NoticeText'
 
 const NoticeCell = () => {
   return (
-    <Box display='flex' justifyContent='center' alignItems='center' margin={2}>
+    <Box
+      maxWidth={350}
+      width='100%'
+      display='flex'
+      justifyContent='center'
+      alignItems='center'
+      margin={2}>
       <NoticeText />
     </Box>
   )
