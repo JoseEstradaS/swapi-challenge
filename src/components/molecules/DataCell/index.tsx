@@ -3,12 +3,12 @@ import { Fragment } from 'react'
 
 interface IDataCell {
   property: string,
-  value: string
+  value?: string
 }
 
 const DataCell = ({property, value}: IDataCell) => {
   return (
-    <Fragment key={`${property}-${value}`}>
+    <Fragment key={`${property}-${value ?? ''}`}>
       <Box
       padding={2}
       display='flex'
@@ -16,7 +16,7 @@ const DataCell = ({property, value}: IDataCell) => {
       justifyContent='space-between'
       alignItems='center'>
         <Typography variant='h2' color='primary.light'>{property}</Typography>
-        <Typography variant='h2' color='primary.dark'>{value}</Typography>
+        { Boolean(value) && <Typography variant='h2' color='primary.dark'>{value}</Typography>}
       </Box>
       <Divider />
     </Fragment>
