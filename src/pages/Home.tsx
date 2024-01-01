@@ -1,4 +1,4 @@
-import { Box, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Divider, useMediaQuery, useTheme } from '@mui/material'
 import Header from '../components/organisms/Header'
 import Aside from '../components/organisms/Aside'
 import PersonDetails from '../components/organisms/PersonDetails'
@@ -19,6 +19,7 @@ const Home = () => {
       <Header />
       <Box display='flex'>
         <Aside onSelect={handleSelectPerson} isMobile={isMobile} />
+        {!isMobile && <Divider orientation='vertical' flexItem />}
         {(!isMobile || Boolean(selectedPerson)) && <PersonDetails />}
       </Box>
     </>
