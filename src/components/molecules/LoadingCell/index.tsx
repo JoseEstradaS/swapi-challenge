@@ -1,5 +1,5 @@
-import { Box } from "@mui/material"
-import LoadingIndicator from "../LoadingIndicator"
+import { Box } from '@mui/material'
+import LoadingIndicator from '../LoadingIndicator'
 
 
 const LoadingCell = () => {

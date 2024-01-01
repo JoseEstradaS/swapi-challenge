@@ -1,5 +1,5 @@
-import { Box } from "@mui/material"
-import NoticeText from "../../atoms/NoticeText"
+import { Box } from '@mui/material'
+import NoticeText from '../../atoms/NoticeText'
 
 
 const NoticeCell = () => {
