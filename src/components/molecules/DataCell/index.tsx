@@ -1,4 +1,5 @@
 import { Box, Divider, Skeleton, Typography } from '@mui/material'
+import { makeStyles } from 'tss-react/mui';
 
 interface IDataCell {
   property: string;
@@ -7,6 +8,8 @@ interface IDataCell {
 }
 
 const DataCell = ({ property, value, isLoading }: IDataCell) => {
+  const { classes } = useStyles()
+
   return (
     <>
       <Box
@@ -18,11 +21,19 @@ const DataCell = ({ property, value, isLoading }: IDataCell) => {
         <Typography variant='h2' color='primary.light'>
           { !isLoading ? property : <Skeleton width={200} />}
         </Typography>
-        { Boolean(value) && <Typography variant='h2' color='primary.dark'>{value}</Typography>}
+        { Boolean(value) && <Typography className={classes.capitalize} variant='h2' color='primary.dark'>{value}</Typography>}
       </Box>
       <Divider />
     </>
   )
 }
+
+const useStyles = makeStyles({ 'name': 'DataCell'})(
+  () => ({
+    capitalize: {
+      textTransform: 'capitalize'
+    },
+  })
+);
 
 export default DataCell
