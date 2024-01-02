@@ -1,33 +1,42 @@
-import { Fragment } from 'react';
-import { Divider, ListItemButton, ListItemText } from '@mui/material'
-import { NavigateNext as NavigateNextIcon } from '@mui/icons-material';
 import { makeStyles } from 'tss-react/mui';
+import { Divider, ListItemButton, ListItemText, Skeleton } from '@mui/material'
+import { NavigateNext as NavigateNextIcon } from '@mui/icons-material';
+import { useGetPlanet } from '../../../hooks/useGetPlanet';
+import { useGetSpecie } from '../../../hooks/useGetSpecie';
+import { Person } from '../../../types';
 
 interface PersonCell {
-  name: string;
-  specie?: string;
-  homeworld?: string;
+  person: Person;
+  onSelect: (person: Person) => void;
 }
 
-const PersonCell = ({name, specie, homeworld }: PersonCell) => {
+const PersonCell = ({ person, onSelect }: PersonCell) => {
   const { classes } = useStyles()
 
+  const {
+    data: specieData
+  } = useGetSpecie(person.species[0])
+
+  const {
+    data: homeworldData
+  } = useGetPlanet(person.homeworld)
+
   const handleClick = () => {
-    
+    onSelect(person)
   }
 
   return (
-    <Fragment key={`${name}-${specie}-${homeworld}`} >
+    <>
       <ListItemButton className={classes.root} onClick={handleClick}>
         <ListItemText
-          primary={name}
+          primary={person.name}
           primaryTypographyProps={{ color: 'primary', variant: 'h2'}}
-          secondary={specie && homeworld ? `${specie} from ${homeworld}` : 'Loading...'}
+          secondary={(specieData && homeworldData) ? `${specieData.name} from ${homeworldData.name}` : <Skeleton width={130} /> }
           secondaryTypographyProps={{ color: 'primary.light', variant: 'body1' }} />
         <NavigateNextIcon />
       </ListItemButton>
       <Divider />
-    </Fragment>
+    </>
   )
 }
 
