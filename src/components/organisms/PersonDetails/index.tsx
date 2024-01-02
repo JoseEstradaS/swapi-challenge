@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 import { Person } from '../../../types';
 import DataCell from '../../molecules/DataCell'
 import SectionHeader from '../../molecules/SectionHeader'
-import VehicleCell from './VehicleCell';
+import VehicleCell from '../../molecules/VehicleCell';
 
 interface IPersonDetails {
   selectedPerson?: Person;
