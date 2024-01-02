@@ -15,7 +15,7 @@ const Header = ({onBack, selectedPerson}: IHeader) => {
     <AppBar position="sticky">
       <Toolbar>
         { selectedPerson && (
-          <IconButton color='inherit' onClick={onBack}>
+          <IconButton aria-label='Go back' color='inherit' onClick={onBack}>
             <ArrowBackIcon />
           </IconButton>
         )}
