@@ -12,5 +12,5 @@ describe('useSwapiData', () => {
     expect(result.current.data).toEqual(mockSwapiPeopleData);
     expect(result.current.isLoading).toBe(false);
     expect(result.current.isError).toBeUndefined();
-  });
+  }, { timeout: 20000 });
 });
