@@ -14,7 +14,7 @@ const NoticeCell = ({isMobile}: INoticeCell) => {
       display='flex'
       justifyContent='center'
       alignItems='center'
-      margin={2}>
+      padding={2}>
       <NoticeText />
     </Box>
   )
