@@ -4,7 +4,7 @@ const Spinner = () => {
   const { classes } = useStyles();
 
   return (
-    <img className={classes.spinner} src="/spinner.gif" alt="Loading..." />
+    <img className={classes.spinner} src="/spinner.svg" alt="Loading..." />
   );
 };
 
