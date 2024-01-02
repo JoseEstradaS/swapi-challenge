@@ -1,7 +1,7 @@
-import { AppBar, Toolbar, Typography } from '@mui/material';
+import { makeStyles } from 'tss-react/mui';
+import { AppBar, Toolbar, Typography, IconButton } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Person } from '../../../types';
-import { IconButton } from '@mui/material';
 
 interface IHeader {
   selectedPerson?: Person;
@@ -9,6 +9,8 @@ interface IHeader {
 }
 
 const Header = ({onBack, selectedPerson}: IHeader) => {
+  const { classes } = useStyles()
+
   return (
     <AppBar position="sticky">
       <Toolbar>
@@ -17,12 +19,23 @@ const Header = ({onBack, selectedPerson}: IHeader) => {
             <ArrowBackIcon />
           </IconButton>
         )}
-        <Typography variant="h6" component="div">
-          { selectedPerson?.name ? selectedPerson.name : 'Ravn Star Wars Registry'}
+        <Typography className={classes.title} variant="h6" component="div">
+          { selectedPerson?.name ? selectedPerson.name : 'People of Star Wars'}
         </Typography>
       </Toolbar>
     </AppBar>
   )
 }
+
+const useStyles = makeStyles({ 'name': 'Header'})(
+  (theme) => ({
+    title: {
+      [theme.breakpoints.down('md')]: {
+        flexGrow: 1,
+        textAlign: 'center',
+      },
+    },
+  })
+);
 
 export default Header
