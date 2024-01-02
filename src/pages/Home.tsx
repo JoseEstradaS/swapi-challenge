@@ -1,29 +1,43 @@
-import { Box, Divider, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Divider, useMediaQuery } from '@mui/material'
 import Header from '../components/organisms/Header'
 import Aside from '../components/organisms/Aside'
 import PersonDetails from '../components/organisms/PersonDetails'
 import { useState } from 'react'
+import { Person } from '../types'
+import { makeStyles } from 'tss-react/mui'
 
 const Home = () => {
-  const [selectedPerson, setSelectedPerson] = useState('')
+  const [selectedPerson, setSelectedPerson] = useState<Person>()
 
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const { classes, theme } = useStyles()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   
-  const handleSelectPerson = (personUrl: string) => {
-    setSelectedPerson(personUrl)
+  const handleSelectPerson = (person: Person) => {
+    setSelectedPerson(person)
+  }
+
+  const handleRevertSelect = () => {
+    setSelectedPerson(undefined)
   }
 
   return (
     <>
-      <Header />
+      <Header onBack={handleRevertSelect} selectedPerson={selectedPerson} />
       <Box display='flex'>
-        <Aside onSelect={handleSelectPerson} isMobile={isMobile} />
-        {!isMobile && <Divider orientation='vertical' flexItem />}
-        {(!isMobile || Boolean(selectedPerson)) && <PersonDetails />}
+        {(!isMobile || !selectedPerson) && <Aside onSelect={handleSelectPerson} isMobile={isMobile} />}
+        {!isMobile && <Divider className={classes.divider} orientation='vertical' flexItem />}
+        {(!isMobile || Boolean(selectedPerson)) && <PersonDetails selectedPerson={selectedPerson} />}
       </Box>
     </>
   )
 }
+
+const useStyles = makeStyles({ 'name': 'Home'})(
+  () => ({
+    divider: {
+      minHeight: 'calc(100vh - 64px)'
+    },
+  })
+);
 
 export default Home
