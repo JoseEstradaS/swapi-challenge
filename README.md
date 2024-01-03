@@ -1,30 +1,39 @@
-# React + TypeScript + Vite
+# Caso práctico Samishop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto contiene una solución desarrollada en React con TypeScript, implementada con Vite y Vitest para realizar pruebas unitarias.
 
-Currently, two official plugins are available:
+## Instalación
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Clona este repositorio:
 
-## Expanding the ESLint configuration
+   ```
+   git clone https://github.com/JoseEstradaS/swapi-challenge.git
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. Navega hasta el directorio del proyecto:
 
-- Configure the top-level `parserOptions` property like this:
+   ```
+   cd swapi-challenge
+   ```
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+3. Instala las dependencias utilizando Yarn:
+
+   ```
+   yarn
+   ```
+
+## Desarrollo
+
+Para ejecutar el proyecto en modo de desarrollo:
+
+```bash
+yarn dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Tests
+
+Para ejecutar las pruebas con Vitest:
+
+```
+yarn test
+```
