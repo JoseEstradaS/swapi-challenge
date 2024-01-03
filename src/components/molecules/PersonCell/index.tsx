@@ -33,9 +33,9 @@ const PersonCell = ({ person, onSelect }: PersonCell) => {
           primaryTypographyProps={{ color: 'primary', variant: 'h2'}}
           secondary={(specieData && homeworldData) ? `${specieData.name} from ${homeworldData.name}` : <Skeleton width={130} /> }
           secondaryTypographyProps={{ color: 'primary.light', variant: 'body1' }} />
-        <NavigateNextIcon />
+        <NavigateNextIcon htmlColor='black'/>
       </ListItemButton>
-      <Divider />
+      <Divider className={classes.customDivider}/>
     </>
   )
 }
@@ -45,6 +45,9 @@ const useStyles = makeStyles({ 'name': 'PersonCell'})(
     root: {
       padding: theme.spacing(2)
     },
+    customDivider: {
+      marginLeft: theme.spacing(2)
+    }
   })
 );
 

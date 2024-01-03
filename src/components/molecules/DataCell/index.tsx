@@ -23,16 +23,19 @@ const DataCell = ({ property, value, isLoading }: IDataCell) => {
         </Typography>
         { Boolean(value) && <Typography className={classes.capitalize} variant='h2' color='primary.dark'>{value}</Typography>}
       </Box>
-      <Divider />
+      <Divider className={classes.customDivider} />
     </>
   )
 }
 
 const useStyles = makeStyles({ 'name': 'DataCell'})(
-  () => ({
+  (theme) => ({
     capitalize: {
       textTransform: 'capitalize'
     },
+    customDivider: {
+      marginLeft: theme.spacing(2)
+    }
   })
 );
 
