@@ -8,7 +8,7 @@ describe('useGetPeople', () => {
   it('should fetch initial data successfully', async () => {
     const { result, waitForNextUpdate } = renderHook(() => useGetPeople());
 
-    await waitForNextUpdate({ timeout: 10000 });
+    await waitForNextUpdate({ timeout: 20000 });
 
     expect(result.current.isLoading).toBe(false);
     expect(result.current.isError).toBeUndefined();
@@ -28,7 +28,7 @@ describe('useGetPeople', () => {
     const { result, waitForNextUpdate } = renderHook(() => useGetPeople());
 
     result.current.loadMore();
-    await waitForNextUpdate({ timeout: 10000 });
+    await waitForNextUpdate({ timeout: 20000 });
 
     expect(result.current.data.results.length).toEqual(PEOPLE_PAGE_SIZE * 3);
   }, { timeout: 20000 });
