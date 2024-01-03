@@ -5,22 +5,25 @@ import { Person } from '../../../types';
 
 interface IHeader {
   selectedPerson?: Person;
+  isMobile: boolean;
   onBack: () => void;
 }
 
-const Header = ({onBack, selectedPerson}: IHeader) => {
+const Header = ({onBack, selectedPerson, isMobile}: IHeader) => {
   const { classes } = useStyles()
+
+  const defaultTitle = isMobile ? 'People of Star Wars' : 'Ravn Star Wars Registry'
 
   return (
     <AppBar position="sticky">
       <Toolbar>
-        { selectedPerson && (
+        { selectedPerson && isMobile && (
           <IconButton aria-label='Go back' color='inherit' onClick={onBack}>
             <ArrowBackIcon />
           </IconButton>
         )}
         <Typography className={classes.title} variant="h6" component="div">
-          { selectedPerson?.name ? selectedPerson.name : 'People of Star Wars'}
+          { selectedPerson?.name && isMobile ? selectedPerson.name : defaultTitle}
         </Typography>
       </Toolbar>
     </AppBar>

@@ -22,7 +22,7 @@ const Home = () => {
 
   return (
     <>
-      <Header onBack={handleRevertSelect} selectedPerson={selectedPerson} />
+      <Header isMobile={isMobile} onBack={handleRevertSelect} selectedPerson={selectedPerson} />
       <Box display='flex'>
         {(!isMobile || !selectedPerson) && <Aside onSelect={handleSelectPerson} isMobile={isMobile} />}
         {!isMobile && <Divider className={classes.divider} orientation='vertical' flexItem />}
