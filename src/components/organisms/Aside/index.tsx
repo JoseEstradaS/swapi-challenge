@@ -47,6 +47,7 @@ const Aside = ({isMobile, onSelect}: IAside) => {
         }}}
         data={results}
         endReached={handleEndReached}
+        initialItemCount={5}
         overscan={20}
         itemContent={(_, person) => (
           <PersonCell
